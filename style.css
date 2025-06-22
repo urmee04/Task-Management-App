@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #b1f0f5;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2, h3 {
+  color: #555;
+  margin-top: 40px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  padding: 8px;
+  margin: 5px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #ff4757;
+}
+
+#taskList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#taskList li {
+  background-color: #fff;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#taskList select {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+label {
+  margin-right: 8px;
+  font-weight: bold;
+}
