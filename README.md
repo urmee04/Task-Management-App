@@ -18,26 +18,6 @@ This project demonstrates the use of core JavaScript concepts such as:
 - The Local Storage API
 
 ---
-
-### How to Check If It's Working
-
-#### Open Developer Tools
-
-- Right-click on the page → Click **Inspect** → Go to the **Console** tab.
-
-#### Check Stored Tasks
-
-Run this in the Console:
-```js
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-console.log(tasks);
-```
-#### Check localStorage Directly
-```js
-console.log(localStorage.getItem('tasks'));
-```
-If it logs null, it means there’s no 'tasks' key in localStorage yet.
-
 #### Features
 1. Add new tasks with:
 
@@ -87,6 +67,26 @@ If it logs null, it means there’s no 'tasks' key in localStorage yet.
 - Use the dropdowns and Filter button to view specific tasks.
 
 - Task data will automatically be saved and restored using your browser’s localStorage.
+
+### How to Check If Localtoreage is Working
+
+#### Open Developer Tools
+
+- Right-click on the page → Click **Inspect** → Go to the **Console** tab.
+
+#### Check Stored Tasks
+
+Run this in the Console:
+```js
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+console.log(tasks);
+```
+#### Check localStorage Directly
+```js
+console.log(localStorage.getItem('tasks'));
+```
+If it logs null, it means there’s no 'tasks' key in localStorage yet.
+
 
 #### Reflection
 **1. Challenges faced during the project.**
