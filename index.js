@@ -118,3 +118,10 @@ function refreshCategorySelections() {
     categoryFilter.add(filterOption); // Add option to dropdown
   });
 }
+//Clears the task input form
+function resetTaskForm() {
+  newTaskNameField.value = "";
+  newTaskCategoryField.value = "";
+  newTaskDeadlineField.value = "";
+  newTaskStatusField.value = "In Progress";
+}
