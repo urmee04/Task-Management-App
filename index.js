@@ -33,6 +33,24 @@ function processNewTask() {
   taskRepository.push(taskRecord);
   persistTasks();
   resetTaskForm();
+  refreshCategorySelections();
+  renderPrimaryTaskView();
+}
+//Shows all tasks in main container
+function renderPrimaryTaskView() {
+  populateTaskContainer(taskContainer);
+}
+//Shows filtered tasks in secondary container
+
+function renderFilteredTaskView(
+  statusSelection = "All",
+  categorySelection = "All"
+) {
+  populateTaskContainer(
+    filteredTaskContainer,
+    statusSelection,
+    categorySelection
+  );
 }
 
 //Generate task list in specified container
@@ -64,14 +82,15 @@ function populateTaskContainer(
       const taskElement = createTaskElement(taskItem, taskIndex);
       containerElement.appendChild(taskElement);
     }
-    //Show fallback message if no tasks matched the selected filters
-
-    if (!tasksFound) {
-      const emptyMessage = document.createElement("li");
-      emptyMessage.textContent = "No matching tasks found.";
-      containerElement.appendChild(emptyMessage);
-    }
   });
+  //Show fallback message if no tasks matched the selected filters
+
+  if (!tasksFound) {
+    const emptyMessage = document.createElement("li");
+    emptyMessage.textContent = "No matching tasks found.";
+    containerElement.appendChild(emptyMessage);
+  }
+  persistTasks();
 }
 //Create individual task DOM element
 function createTaskElement(taskData, indexPosition) {
@@ -91,13 +110,13 @@ function createTaskElement(taskData, indexPosition) {
   statusSelector.addEventListener("change", (selectionEvent) => {
     taskRepository[indexPosition].status = selectionEvent.target.value;
     persistTasks();
+    renderPrimaryTaskView();
   });
   //Append the status dropdown to the task node
   taskNode.appendChild(statusSelector);
   // Return the fully built task element
   return taskNode;
 }
-
 // Refresh the category dropdown with unique values from existing tasks
 function refreshCategorySelections() {
   const categoryFilter = document.getElementById("categoryFilter"); // Get the category filter dropdown
@@ -139,9 +158,13 @@ document
 
 //Bind click event to "Filter" button to apply selected filters
 document.getElementById("filterButton").addEventListener("click", () => {
-  const selectedStatus = document.getElementById("filter").value; // Get selected task status
+  // Get selected task status
+  const selectedStatus = document.getElementById("filter").value;
   const selectedCategory = document.getElementById("categoryFilter").value; // Get selected task category
 
   //Call function to display tasks matching selected filters
   renderFilteredTaskView(selectedStatus, selectedCategory);
 });
+// Initial setup
+refreshCategorySelections();
+renderPrimaryTaskView();
