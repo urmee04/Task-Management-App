@@ -71,3 +71,26 @@ function populateTaskContainer(
     }
   });
 }
+//Create individual task DOM element
+function createTaskElement(taskData, indexPosition) {
+  //Create the main list item node to display task info
+  const taskNode = document.createElement("li");
+  //Set the text content to show task title, category, and deadline
+  taskNode.textContent = `${taskData.title} - ${taskData.category} - ${taskData.deadline} - `;
+  //Create a dropdown to allow changing the task status
+  const statusSelector = document.createElement("select");
+  // Add options to the dropdown for each possible status
+  ["In Progress", "Completed", "Overdue"].forEach((optionValue) => {
+    const choice = new Option(optionValue, optionValue);
+    choice.selected = taskData.status === optionValue; // Mark current status as selected
+    statusSelector.appendChild(choice);
+  });
+  //Update task status in the repository when a new status is selected
+  statusSelector.addEventListener("change", (selectionEvent) => {
+    taskRepository[indexPosition].status = selectionEvent.target.value;
+  });
+  //Append the status dropdown to the task node
+  taskNode.appendChild(statusSelector);
+  // Return the fully built task element
+  return taskNode;
+}
