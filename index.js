@@ -50,17 +50,24 @@ function populateTaskContainer(
     if (taskItem.status !== "Completed" && dueDate < today) {
       taskItem.status = "Overdue";
     }
+    //Filter tasks by status and category, then render matching tasks to the container
+
+    const matchesStatus =
+      statusFilter === "All" || taskItem.status === statusFilter;
+    const matchesCategory =
+      categoryFilter === "All" || taskItem.category === categoryFilter;
+
+    if (matchesStatus && matchesCategory) {
+      tasksFound = true;
+      const taskElement = createTaskElement(taskItem, taskIndex);
+      containerElement.appendChild(taskElement);
+    }
+    //Show fallback message if no tasks matched the selected filters
+
+    if (!tasksFound) {
+      const emptyMessage = document.createElement("li");
+      emptyMessage.textContent = "No matching tasks found.";
+      containerElement.appendChild(emptyMessage);
+    }
   });
-  //Filter tasks by status and category, then render matching tasks to the container
-
-  const matchesStatus =
-    statusFilter === "All" || taskItem.status === statusFilter;
-  const matchesCategory =
-    categoryFilter === "All" || taskItem.category === categoryFilter;
-
-  if (matchesStatus && matchesCategory) {
-    tasksFound = true;
-    const taskElement = createTaskElement(taskItem, taskIndex);
-    containerElement.appendChild(taskElement);
-  }
 }
