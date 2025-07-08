@@ -1,6 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #b1f0f5;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  background: linear-gradient(to right, #d9e4f5, #f0f8ff);
   margin: 0;
   padding: 30px;
   text-align: center;
@@ -9,65 +9,82 @@ body {
 }
 
 h2 {
-  color: #637ced;
+  color: #2d4a91;
   margin-bottom: 20px;
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 
- h3 {
-  color: #4a8ec6;
+h3 {
+  color: #1d7ab7;
   margin-top: 40px;
+  font-size: 1.5rem;
 }
 
 input[type="text"],
 input[type="date"],
 select {
-  padding: 8px;
-  margin: 5px;
-  width: 200px;
+  padding: 10px;
+  margin: 8px;
+  width: 220px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  background-color: #f9f9f9;
 }
 
 button {
-  padding: 10px 16px;
-  background-color: #ff6b6b;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 12px;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 button:hover {
-  background-color: #ff4757;
+  background: linear-gradient(135deg, #ff4757, #ff6b6b);
 }
 
-#taskList {
+#taskList,
+#filteredTaskList {
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
 }
 
-#taskList li {
-  background-color: #fff;
-  margin: 10px auto;
-  padding: 12px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+#taskList li,
+#filteredTaskList li {
+  background-color: #ffffff;
+  margin: 12px auto;
+  padding: 15px 20px;
+  border-radius: 10px;
+  width: 85%;
+  max-width: 650px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  position: relative;
 }
 
 #taskList select {
-  margin-left: 10px;
-  padding: 5px;
-}
-
-#filteredTaskList {
-  list-style-type: none;  
+  margin-left: 15px;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #eef0f3;
 }
 
 label {
-  margin-right: 8px;
+  margin-right: 10px;
   font-weight: bold;
+  color: #2f2f2f;
+  display: inline-block;
+  margin-bottom: 6px;
 }
