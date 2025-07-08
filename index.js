@@ -94,3 +94,27 @@ function createTaskElement(taskData, indexPosition) {
   // Return the fully built task element
   return taskNode;
 }
+
+// Refresh the category dropdown with unique values from existing tasks
+function refreshCategorySelections() {
+  const categoryFilter = document.getElementById("categoryFilter"); // Get the category filter dropdown
+  const currentFilter = categoryFilter.value; // Save the currently selected category
+
+  //Create a list of available categories, including "All" annd unique categories from taskRepository
+  const availableCategories = [
+    "All",
+    ...new Set(taskRepository.map((task) => task.category)),
+  ];
+
+  // Clear existing options in the dropdown
+  categoryFilter.innerHTML = "";
+
+  //Rebuild dropdown options with updated category list
+  availableCategories.forEach((category) => {
+    //Create a new <option> element
+    const filterOption = new Option(category, category);
+    // Keep previous selection if still valid
+    if (category === currentFilter) filterOption.selected = true;
+    categoryFilter.add(filterOption); // Add option to dropdown
+  });
+}
