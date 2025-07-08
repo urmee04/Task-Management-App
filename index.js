@@ -51,4 +51,16 @@ function populateTaskContainer(
       taskItem.status = "Overdue";
     }
   });
+  //Filter tasks by status and category, then render matching tasks to the container
+
+  const matchesStatus =
+    statusFilter === "All" || taskItem.status === statusFilter;
+  const matchesCategory =
+    categoryFilter === "All" || taskItem.category === categoryFilter;
+
+  if (matchesStatus && matchesCategory) {
+    tasksFound = true;
+    const taskElement = createTaskElement(taskItem, taskIndex);
+    containerElement.appendChild(taskElement);
+  }
 }
