@@ -31,6 +31,8 @@ function processNewTask() {
   };
 
   taskRepository.push(taskRecord);
+  persistTasks();
+  resetTaskForm();
 }
 
 //Generate task list in specified container
@@ -88,6 +90,7 @@ function createTaskElement(taskData, indexPosition) {
   //Update task status in the repository when a new status is selected
   statusSelector.addEventListener("change", (selectionEvent) => {
     taskRepository[indexPosition].status = selectionEvent.target.value;
+    persistTasks();
   });
   //Append the status dropdown to the task node
   taskNode.appendChild(statusSelector);
@@ -124,4 +127,8 @@ function resetTaskForm() {
   newTaskCategoryField.value = "";
   newTaskDeadlineField.value = "";
   newTaskStatusField.value = "In Progress";
+}
+//Saves tasks to persistent storage
+function persistTasks() {
+  localStorage.setItem("taskStorage", JSON.stringify(taskRepository));
 }
