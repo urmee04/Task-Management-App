@@ -18,7 +18,9 @@ This project demonstrates the use of core JavaScript concepts such as:
 - The Local Storage API
 
 ---
+
 #### Features
+
 1. Add new tasks with:
 
 - Task Name
@@ -40,6 +42,7 @@ This project demonstrates the use of core JavaScript concepts such as:
 6. Persist task data using localStorage
 
 #### Tech Stack
+
 - HTML5 – Page structure and forms
 
 - CSS3 – Visual styling and layout
@@ -49,16 +52,23 @@ This project demonstrates the use of core JavaScript concepts such as:
 - Local Storage API – Persistent data storage
 
 ### Project Structure
- ```
- Task-Management-App/
+
+```
+Task-Management-App/
 │
 ├── index.html        # Main HTML structure
 ├── style.css        # Styling for layout, buttons, and task list
-├── app.js         # JavaScript logic for task handling and filtering
+├── index.js         # JavaScript logic for task handling and filtering
 └── README.md         # Project documentation
 ```
+
 ### How to Use
-- Clone or download this [repository](https://github.com/urmee04/Task-Management-App.git)
+
+- Clone or download the repository
+
+```bash
+git clone https://github.com/urmee04/Task-Management-App.git
+```
 
 - Open the index.html file in your browser.
 
@@ -77,43 +87,60 @@ This project demonstrates the use of core JavaScript concepts such as:
 #### Check Stored Tasks
 
 Run this in the Console:
-```js
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-console.log(tasks);
-```
-#### Check localStorage Directly
-```js
-console.log(localStorage.getItem('tasks'));
-```
-If it logs null, it means there’s no 'tasks' key in localStorage yet.
 
+```js
+const taskRepository = JSON.parse(localStorage.getItem("taskStorage")) || [];
+console.log(taskRepository);
+```
+
+#### Check localStorage Directly
+
+```js
+console.log(localStorage.getItem("taskSorage"));
+```
+
+If it logs null, it means there’s no 'taskStorage' key in localStorage yet.
 
 #### Reflection
+
 **1. Challenges faced during the project.**
+
 - Ensuring that filtering did not overwrite the original task list
 
-- Dynamically updating task statuses based on date comparisons
+- Implementing real-time status updates (In Progress → Overdue) based on deadline comparisons
 
 - Keeping the UI updated and in sync with localStorage without full-page refreshes
 
 **2. How you approached solving those challenges.**
-- Created separate display sections for all tasks vs filtered tasks
 
-- Used new Date() to compare deadlines and mark overdue items
+- Established distinct rendering targets (taskContainer and filteredTaskContainer)
 
-- Modularized the code into logical functions like addTask(), displayTasks(), and displayFilteredTasks()
+- Implemented date validation in populateTaskContainer() using new Date() comparisons
+
+- Structured the codebase with focused functions:
+
+1. processNewTask() for task creation
+
+2. renderPrimaryTaskView() for main display
+
+3. renderFilteredTaskView() for filtered results
+
+4. persistTasks() for storage synchronization
 
 **3. What you would improve if given more time.**
+
 - Add task editing and deletion for better task management
 
-- Introduce visual indicators for overdue or completed tasks
+- Introduce visual indicators for overdue and completed tasks
 
 - Consider using a front-end framework like React for better state handling and scalability
 
 ##### Resources
+
 - [MDN Web Docs - localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 - [JavaScript Date Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
 - [HTML Input Types](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input)
 
+- [Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
