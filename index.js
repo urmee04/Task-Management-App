@@ -132,3 +132,16 @@ function resetTaskForm() {
 function persistTasks() {
   localStorage.setItem("taskStorage", JSON.stringify(taskRepository));
 }
+// Bind click event to "Add Task" button to trigger task creation
+document
+  .getElementById("addTaskButton")
+  .addEventListener("click", processNewTask);
+
+//Bind click event to "Filter" button to apply selected filters
+document.getElementById("filterButton").addEventListener("click", () => {
+  const selectedStatus = document.getElementById("filter").value; // Get selected task status
+  const selectedCategory = document.getElementById("categoryFilter").value; // Get selected task category
+
+  //Call function to display tasks matching selected filters
+  renderFilteredTaskView(selectedStatus, selectedCategory);
+});
